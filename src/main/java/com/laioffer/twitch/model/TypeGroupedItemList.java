@@ -13,7 +13,6 @@ public record TypeGroupedItemList(
         List<ItemEntity> videos,
         List<ItemEntity> clips
 ) {
-
     public TypeGroupedItemList(List<ItemEntity> items) {
         this(
                 filterForType(items, ItemType.STREAM),
