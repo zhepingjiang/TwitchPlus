@@ -8,6 +8,7 @@ import com.laioffer.twitch.external.model.Stream;
 import com.laioffer.twitch.external.model.Video;
 import com.laioffer.twitch.favorite.FavoriteService;
 import com.laioffer.twitch.model.TypeGroupedItemList;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -34,6 +35,7 @@ public class RecommendationService {
     // For clips: get total of 20 twitches for max 3 gameIds, each game clip has the same number
     // e.g. [6 (game1), 6 (game2), 6 (game3)
     // For videos: get total of 20 twitches for max 3 gameIds, each game video has the same number
+    @Cacheable("recommend_items")
     public TypeGroupedItemList recommendItems(UserEntity userEntity) {
         List<String> gameIds;
         Set<String> exclusions = new HashSet<>();
